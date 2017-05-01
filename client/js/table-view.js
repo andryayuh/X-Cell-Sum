@@ -17,6 +17,7 @@ class TableView {
     this.headerRowEl = document.querySelector('THEAD TR');
     this.sheetBodyEl = document.querySelector('TBODY'); 
     this.formulaBarEl = document.querySelector('#formula-bar');
+    this.footerRowEl = document.querySelector('TFOOT')
   }
 
   initCurrentCell() {
@@ -36,6 +37,7 @@ class TableView {
 
   renderTable() {
     this.renderTableHeader();
+    this.renderTableFooter();
     this.renderTableBody();
   }
 
@@ -51,6 +53,12 @@ class TableView {
             this.currentCellLocation.row === row;
   }
 
+  renderTableFooter() {
+    for (let col = 0; col < this.model.numCols; col++) {
+      this.footerRowEl.appendChild(createTD(0));
+    }
+  }
+
   renderTableBody() {
     const fragment = document.createDocumentFragment();
     for (let row = 0; row < this.model.numRows; row++) {
@@ -59,12 +67,14 @@ class TableView {
         const position = {col: col, row: row};
         const value = this.model.getValue(position);
         const td = createTD(value);
-        
+
         if (this.isCurrentCell(col, row)) {
           td.className = 'current-cell';
         }
 
         tr.appendChild(td);
+        let columnSum = this.model.getSum(col); 
+        this.updateFooter(columnSum, col); 
       }
       fragment.appendChild(tr);
     }
@@ -74,7 +84,7 @@ class TableView {
 
   attachEventHandlers() {
     this.sheetBodyEl.addEventListener('click', this.handleSheetClick.bind(this));
-    this.formulaBarEl.addEventListener('keyup', this.handleFormulaBarChange.bind(this));  
+    this.formulaBarEl.addEventListener('keyup', this.handleFormulaBarChange.bind(this)); 
   }
 
   handleFormulaBarChange(evt) {
@@ -88,7 +98,13 @@ class TableView {
     const row = evt.target.parentElement.rowIndex - 1;
     this.currentCellLocation = { col: col, row: row };
     this.renderTableBody();
-    this.renderFormulaBar();    
+    this.renderFormulaBar();  
+  }
+
+  updateFooter(columnSum, col) {
+    this.footerCellEl = document.querySelectorAll('TFOOT TD')
+    let footer = this.footerCellEl;
+    footer.item(col).textContent = columnSum;
   }
 
 }
