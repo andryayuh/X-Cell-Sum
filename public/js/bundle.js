@@ -81,9 +81,7 @@ class TableModel {
       }
     }
     if(sum.length > 1) {
-      sum = sum.reduce( function(b,a){
-        return b + a;
-      });
+      sum = sum.reduce((b, a) => b + a);
     }
     return sum;
   }
