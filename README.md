@@ -14,4 +14,4 @@ Woo!
 
 
 # Tech Spec
-[I'm the gdoc of specs](https://docs.google.com/document/d/18ZCW33AepGB1UdPOQaFnLS_reOJGUPIkQQBimYYovaA/edit)
+https://docs.google.com/document/d/18ZCW33AepGB1UdPOQaFnLS_reOJGUPIkQQBimYYovaA/edit?usp=sharing

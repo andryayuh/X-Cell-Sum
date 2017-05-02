@@ -55,7 +55,7 @@ class TableView {
 
   renderTableFooter() {
     for (let col = 0; col < this.model.numCols; col++) {
-      this.footerRowEl.appendChild(createTD(0));
+      this.footerRowEl.appendChild(createTD(''));
     }
   }
 
