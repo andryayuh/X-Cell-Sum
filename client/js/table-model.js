@@ -20,7 +20,7 @@ class TableModel {
   
   _getColNums(col) {
     let nums = [];
-    for (let row = 0; row < this.numRows; row++) {
+    for ( row = 0; row < this.numRows; row++) {
       const position = {col: col, row: row};
       nums.push(parseInt(this.getValue(position), 10));
     }
