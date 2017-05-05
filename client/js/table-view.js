@@ -67,11 +67,11 @@ class TableView {
         const position = {col: col, row: row};
         const value = this.model.getValue(position);
         const td = createTD(value);
-
+        
         if (this.isCurrentCell(col, row)) {
           td.className = 'current-cell';
         }
-
+        
         tr.appendChild(td);
         let columnSum = this.model.getSum(col); 
         this.updateFooter(columnSum, col); 

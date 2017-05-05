@@ -31,7 +31,7 @@ class TableModel {
     let colNums = this._getColNums(col)
     let sum = colNums.filter(x => !isNaN(x));
     if (sum.length > 1) {
-      sum = sum.reduce( (a, b) => a + b);
+      sum = sum.reduce((a, b) => a + b);
     }
     return sum;
   }
